@@ -124,7 +124,7 @@
 
     <p class="hero-subtitle">
 
-      Clean, professional websites built for small businesses
+      Clean, professional websites designed and built for small businesses
       that want to look credible, get found and win more
       customers — without spending thousands.
 
@@ -175,7 +175,7 @@
 
 
 
-  <!-- HERO WEBSITE MOCKUP -->
+  <!-- HERO WEBSITE CAROUSEL -->
 
   <div class="hero-visual">
 
@@ -184,11 +184,9 @@
       <div class="browser-top">
 
         <div class="browser-dots">
-
           <span></span>
           <span></span>
           <span></span>
-
         </div>
 
         <div class="browser-address">
@@ -197,36 +195,17 @@
 
       </div>
 
+      <div class="hero-carousel">
 
-      <div class="browser-content">
-
-        <span class="browser-badge">
-          Your business. Online.
-        </span>
-
-        <h3>
-          A website your customers can trust.
-        </h3>
-
-        <p>
-          Professional. Mobile-ready.
-          Built around your business.
-        </p>
-
-        <div class="browser-button">
-          Get in touch
-        </div>
-
-
-        <div class="browser-blocks">
-
-          <span></span>
-          <span></span>
-          <span></span>
-
-        </div>
+        <img
+          id="heroTemplateImage"
+          src="images/TradeLocalServices.png"
+          alt="Trades and local services website example"
+        />
 
       </div>
+
+    </div>
 
     </div>
 
@@ -291,7 +270,7 @@
 <section class="trust-strip">
 
   <p>
-    Built for real South African small businesses
+    Designed and built for real South African small businesses
   </p>
 
 
@@ -468,7 +447,7 @@
 
       <p>
 
-        Your website gets built,
+        Your website gets designed, built,
         connected to your domain
         and prepared for your customers.
 
@@ -528,63 +507,7 @@
 
   </div>
 
-
-
-  <!-- STYLE PILLS -->
-
-  <div class="style-pills">
-
-
-    <button
-      type="button"
-      class="style-pill"
-      data-template="trades"
-    >
-      🛠 Trades
-    </button>
-
-
-    <button
-      type="button"
-      class="style-pill"
-      data-template="beauty"
-    >
-      ✂ Beauty
-    </button>
-
-
-    <button
-      type="button"
-      class="style-pill"
-      data-template="food"
-    >
-      🍽 Food
-    </button>
-
-
-    <button
-      type="button"
-      class="style-pill"
-      data-template="coach"
-    >
-      💼 Coach
-    </button>
-
-
-    <button
-      type="button"
-      class="style-pill active"
-      data-template="property"
-    >
-      🏠 Property
-    </button>
-
-
-  </div>
-
-
-
-  <div class="style-showcase">
+<div class="style-showcase">
 
 
     <!-- LEFT OPTIONS -->
@@ -978,11 +901,10 @@
 
 
 <!-- ======================================================
-     WEBSITE STYLE GALLERY SCRIPT
+     WEBSITE STYLE GALLERY + HERO CAROUSEL SCRIPT
      ====================================================== -->
 
 <script>
-
 
 const templateImages = {
 
@@ -1014,14 +936,57 @@ const templateImages = {
 };
 
 
+/* HERO CAROUSEL — rotate every 5 seconds */
+
+const heroImage =
+  document.getElementById("heroTemplateImage");
+
+const heroTemplates = [
+  templateImages.trades,
+  templateImages.beauty,
+  templateImages.food,
+  templateImages.coach,
+  templateImages.property
+];
+
+let heroTemplateIndex = 0;
+
+
+function rotateHeroTemplate() {
+
+  heroTemplateIndex =
+    (heroTemplateIndex + 1) % heroTemplates.length;
+
+  const selected =
+    heroTemplates[heroTemplateIndex];
+
+  heroImage.classList.add("hero-image-changing");
+
+  setTimeout(() => {
+
+    heroImage.src = selected.src;
+    heroImage.alt = selected.alt;
+
+    heroImage.classList.remove("hero-image-changing");
+
+  }, 250);
+
+}
+
+
+setInterval(
+  rotateHeroTemplate,
+  5000
+);
+
+
+/* STYLE GALLERY — vertical selector only */
+
 const previewImage =
   document.getElementById("templatePreviewImage");
 
-
 const styleControls =
-  document.querySelectorAll(
-    ".style-pill, .style-option"
-  );
+  document.querySelectorAll(".style-option");
 
 
 function showTemplate(templateName) {
@@ -1029,29 +994,18 @@ function showTemplate(templateName) {
   const selected =
     templateImages[templateName];
 
-
   if (!selected) {
     return;
   }
 
-
-  previewImage.classList.add(
-    "preview-changing"
-  );
-
+  previewImage.classList.add("preview-changing");
 
   setTimeout(() => {
 
-    previewImage.src =
-      selected.src;
+    previewImage.src = selected.src;
+    previewImage.alt = selected.alt;
 
-    previewImage.alt =
-      selected.alt;
-
-
-    previewImage.classList.remove(
-      "preview-changing"
-    );
+    previewImage.classList.remove("preview-changing");
 
   }, 120);
 
@@ -1068,48 +1022,24 @@ function showTemplate(templateName) {
 }
 
 
-
 styleControls.forEach((control) => {
-
 
   control.addEventListener(
     "mouseenter",
-    () => {
-
-      showTemplate(
-        control.dataset.template
-      );
-
-    }
+    () => showTemplate(control.dataset.template)
   );
-
 
   control.addEventListener(
     "focus",
-    () => {
-
-      showTemplate(
-        control.dataset.template
-      );
-
-    }
+    () => showTemplate(control.dataset.template)
   );
-
 
   control.addEventListener(
     "click",
-    () => {
-
-      showTemplate(
-        control.dataset.template
-      );
-
-    }
+    () => showTemplate(control.dataset.template)
   );
 
-
 });
-
 
 </script>
 
