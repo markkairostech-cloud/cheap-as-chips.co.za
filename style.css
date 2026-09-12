@@ -768,13 +768,13 @@ a{
 }
 
 .floating-price{
-  left:-45px;
-  bottom:50px;
+  left:-38px;
+  bottom:48px;
 }
 
 .floating-mobile{
-  right:-25px;
-  top:55px;
+  right:-18px;
+  top:48px;
 
   animation-delay:-2.5s;
 }
