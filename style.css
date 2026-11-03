@@ -2751,3 +2751,7 @@ a{
 .hero-contact-number{font-size:clamp(19px,2.1vw,27px);font-weight:800;letter-spacing:.01em;white-space:nowrap}
 @media(max-width:650px){.hero-contact{margin-top:20px}.hero-contact-details{gap:10px}.hero-contact-icon{width:42px;height:42px}.hero-contact-number{font-size:clamp(17px,5vw,23px)}}
 
+
+/* New Cheap as Chips brand icon — header and footer */
+.brand-mark-logo { background: transparent; box-shadow: none; border-radius: 0; overflow: visible; }
+.brand-mark-logo img { display: block; width: 44px; height: 44px; object-fit: contain; }
